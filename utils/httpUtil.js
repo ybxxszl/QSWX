@@ -3,7 +3,7 @@
 
 const app = getApp();
 
-var API_URL = "http://127.0.0.1:8282/QS/wechat";
+var API_URL = "http://127.0.0.1:8181/qs/api/wechat";
 var token = app.globalData.token;
 
 function request(url, method, data) {
@@ -16,7 +16,7 @@ function request(url, method, data) {
   });
   return new Promise(function(resolve, reject) { // 异步
     wx.request({
-      url: API_URL + 'url',
+      url: API_URL + url,
       method: method,
       data: data,
       header: {
@@ -55,7 +55,7 @@ function noTokenRequest(url, method, data) {
   });
   return new Promise(function(resolve, reject) { // 异步
     wx.request({
-      url: API_URL + 'url',
+      url: API_URL + url,
       method: method,
       data: data,
       success(result) {
