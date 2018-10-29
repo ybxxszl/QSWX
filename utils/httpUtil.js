@@ -23,7 +23,7 @@ function request(url, method, data) {
         'H-token': token
       },
       success(result) {
-        console.log("statusCode:" + result.statusCode);
+        console.log(result);
         wx.hideLoading();
         if (result.statusCode === 200) {
           resolve(result);
@@ -31,7 +31,7 @@ function request(url, method, data) {
         } else {
           wx.showModal({
             title: '您的网络不太好呀！！！',
-            content: result.data.message,
+            content: res.data.message,
             showCancel: false
           });
           return;
@@ -59,7 +59,7 @@ function noTokenRequest(url, method, data) {
       method: method,
       data: data,
       success(result) {
-        console.log("statusCode:" + result.statusCode);
+        console.log(result);
         wx.hideLoading();
         if (result.statusCode === 200) {
           resolve(result);

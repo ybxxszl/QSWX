@@ -1,0 +1,10 @@
+<view>{{authorId}}</view>
+<view>{{authorAccount}}</view>
+<view>{{authorName}}</view>
+<view>{{authorSex}}</view>
+<view>{{authorBirthday}}</view>
+<view>{{authorPhone}}</view>
+<view>{{authorEmail}}</view>
+<view>{{authorPhoto}}</view>
+<view>{{token}}</view>
+<view>{{sessionKey}}</view>
