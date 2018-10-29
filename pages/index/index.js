@@ -9,8 +9,6 @@ Page({
 
   //页面的初始数据
   data: {
-    needRegister: false,
-    authorId: null,
     authorAccount: null,
     authorName: null,
     authorSex: null,
@@ -18,8 +16,7 @@ Page({
     authorPhone: null,
     authorEmail: null,
     authorPhoto: null,
-    token: null,
-    sessionKey: null
+    needRegister: false
   },
 
   //生命周期函数--监听页面加载
@@ -68,7 +65,8 @@ Page({
         };
         http.noTokenRequest(url, "GET", data).then(function(result) {
           var data = result.data;
-          if (data.author == null) {
+          console.log(data);
+          if (JSON.stringify(data.author) == "{}") { // 判断JSON对象为空
             that.setData({
               needRegister: true
             });
@@ -85,7 +83,6 @@ Page({
             app.globalData.sessionKey = data.sessionKey;
 
             that.setData({
-              authorId: app.globalData.authorId,
               authorAccount: app.globalData.authorAccount,
               authorName: app.globalData.authorName,
               authorSex: app.globalData.authorSex,
@@ -93,8 +90,6 @@ Page({
               authorPhone: app.globalData.authorPhone,
               authorEmail: app.globalData.authorEmail,
               authorPhoto: app.globalData.authorPhoto,
-              token: app.globalData.token,
-              sessionKey: app.globalData.sessionKey
             });
           }
         }).catch(function(error) {

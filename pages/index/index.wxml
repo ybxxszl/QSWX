@@ -1,10 +1,15 @@
-<view>{{authorId}}</view>
-<view>{{authorAccount}}</view>
-<view>{{authorName}}</view>
-<view>{{authorSex}}</view>
-<view>{{authorBirthday}}</view>
-<view>{{authorPhone}}</view>
-<view>{{authorEmail}}</view>
-<view>{{authorPhoto}}</view>
-<view>{{token}}</view>
-<view>{{sessionKey}}</view>
+<view wx:if="{{needRegister}}">
+  <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定登录</button> -->
+  <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取用户信息</button> -->
+  <button type="primary" plain="true">注册</button>
+</view>
+
+<view wx:if="{{!needRegister}}">
+  <view>authorAccount</view>
+  <view>authorName</view>
+  <view>authorSex</view>
+  <view>authorBirthday</view>
+  <view>authorPhone</view>
+  <view>authorEmail</view>
+  <view>authorPhoto</view>
+</view>
