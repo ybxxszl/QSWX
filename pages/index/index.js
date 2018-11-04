@@ -1,5 +1,3 @@
-//pages/index.js
-
 //获取到小程序实例
 const app = getApp();
 
@@ -9,20 +7,20 @@ Page({
 
   //页面的初始数据
   data: {
-    authorAccount: null,
-    authorName: null,
-    authorSex: null,
-    authorBirthday: null,
-    authorPhone: null,
-    authorEmail: null,
-    authorPhoto: null,
+    wxAuthorEmail: "",
+    wxAuthorNickName: "",
+    wxAuthorSex: "",
+    wxAuthorCountry: "",
+    wxAuthorProvince: "",
+    wxAuthorCity: "",
+    wxAuthorAvatarUrl: "",
     needRegister: false
   },
 
   //生命周期函数--监听页面加载
   onLoad: function(options) {
     var that = this;
-    that.getWeChatInfo();
+    that.loginAuthor();
   },
 
   //生命周期函数--监听页面显示
@@ -54,52 +52,51 @@ Page({
 
   },
 
-  getWeChatInfo: function() {
+  loginAuthor: function() {
     var that = this;
     wx.login({
       success: function(result) {
-        console.log("code:" + result.code);
-        var url = "/author/getAuthor";
+        console.log(result);
+        var url = "/author/loginAuthor";
         var data = {
           code: result.code
         };
         http.noTokenRequest(url, "GET", data).then(function(result) {
           var data = result.data;
-          console.log(data);
-          if (JSON.stringify(data.author) == "{}") { // 判断JSON对象为空
+          app.globalData.sessionKey = data.sessionKey;
+          if (JSON.stringify(data.wxAuthor) == "{}") { // 判断JSON对象为空
             that.setData({
               needRegister: true
             });
           } else {
-            app.globalData.authorId = data.author.authorId;
-            app.globalData.authorAccount = data.author.authorAccount;
-            app.globalData.authorName = data.author.authorName;
-            app.globalData.authorSex = data.author.authorSex;
-            app.globalData.authorBirthday = data.author.authorBirthday;
-            app.globalData.authorPhone = data.author.authorPhone;
-            app.globalData.authorEmail = data.author.authorEmail;
-            app.globalData.authorPhoto = data.author.authorPhoto;
+            app.globalData.wxAuthorEmail = data.wxAuthor.wxAuthorEmail;
+            app.globalData.wxAuthorNickName = data.wxAuthor.wxAuthorNickName;
+            app.globalData.wxAuthorSex = data.wxAuthor.wxAuthorSex;
+            app.globalData.wxAuthorCountry = data.wxAuthor.wxAuthorCountry;
+            app.globalData.wxAuthorProvince = data.wxAuthor.wxAuthorProvince;
+            app.globalData.wxAuthorCity = data.wxAuthor.wxAuthorCity;
+            app.globalData.wxAuthorAvatarUrl = data.wxAuthor.wxAuthorAvatarUrl;
             app.globalData.token = data.token;
-            app.globalData.sessionKey = data.sessionKey;
-
             that.setData({
-              authorAccount: app.globalData.authorAccount,
-              authorName: app.globalData.authorName,
-              authorSex: app.globalData.authorSex,
-              authorBirthday: app.globalData.authorBirthday,
-              authorPhone: app.globalData.authorPhone,
-              authorEmail: app.globalData.authorEmail,
-              authorPhoto: app.globalData.authorPhoto,
+              wxAuthorEmail: app.globalData.wxAuthorEmail,
+              wxAuthorNickName: app.globalData.wxAuthorNickName,
+              wxAuthorSex: app.globalData.wxAuthorSex,
+              wxAuthorCountry: app.globalData.wxAuthorCountry,
+              wxAuthorProvince: app.globalData.wxAuthorProvince,
+              wxAuthorCity: app.globalData.wxAuthorCity,
+              wxAuthorAvatarUrl: app.globalData.wxAuthorAvatarUrl
             });
           }
-        }).catch(function(error) {
-          wx.showToast({
-            title: '您的网络不太好呀！！！',
-            image: '../../images/error.png'
-          })
         });
       }
     })
+  },
+
+  register: function() {
+    var that = this;
+    wx.redirectTo({
+      url: "/pages/author/register/register"
+    });
   }
 
 })

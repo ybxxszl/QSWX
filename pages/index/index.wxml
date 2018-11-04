@@ -1,15 +1,13 @@
-<view wx:if="{{needRegister}}">
-  <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定登录</button> -->
-  <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取用户信息</button> -->
-  <button type="primary" plain="true">注册</button>
+<view wx:if="{{!needRegister}}">
+  <view>{{wxAuthorEmail}}</view>
+  <view>{{wxAuthorNickName}}</view>
+  <view>{{wxAuthorSex}}</view>
+  <view>{{wxAuthorCountry}}</view>
+  <view>{{wxAuthorCity}}</view>
+  <view>{{wxAuthorProvince}}</view>
+  <view>{{wxAuthorAvatarUrl}}</view>
 </view>
 
-<view wx:if="{{!needRegister}}">
-  <view>authorAccount</view>
-  <view>authorName</view>
-  <view>authorSex</view>
-  <view>authorBirthday</view>
-  <view>authorPhone</view>
-  <view>authorEmail</view>
-  <view>authorPhoto</view>
+<view wx:if="{{needRegister}}">
+  <button type="primary" plain="true" bindtap="register">注册</button>
 </view>

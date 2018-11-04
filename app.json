@@ -6,7 +6,6 @@
     {
       "root": "pages/author",
       "pages": [
-        "login/login",
         "register/register"
       ]
     }
