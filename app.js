@@ -2,6 +2,7 @@
 App({
 
   globalData: {
+    wxAuthorId: "",
     wxAuthorEmail: "",
     wxAuthorNickName: "",
     wxAuthorSex: "",

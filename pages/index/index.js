@@ -7,6 +7,7 @@ Page({
 
   //页面的初始数据
   data: {
+    wxAuthorId: "",
     wxAuthorEmail: "",
     wxAuthorNickName: "",
     wxAuthorSex: "",
@@ -69,6 +70,7 @@ Page({
               needRegister: true
             });
           } else {
+            app.globalData.wxAuthorId = data.wxAuthor.wxAuthorId;
             app.globalData.wxAuthorEmail = data.wxAuthor.wxAuthorEmail;
             app.globalData.wxAuthorNickName = data.wxAuthor.wxAuthorNickName;
             app.globalData.wxAuthorSex = data.wxAuthor.wxAuthorSex;
@@ -78,6 +80,7 @@ Page({
             app.globalData.wxAuthorAvatarUrl = data.wxAuthor.wxAuthorAvatarUrl;
             app.globalData.token = data.token;
             that.setData({
+              wxAuthorId: app.globalData.wxAuthorId,
               wxAuthorEmail: app.globalData.wxAuthorEmail,
               wxAuthorNickName: app.globalData.wxAuthorNickName,
               wxAuthorSex: app.globalData.wxAuthorSex,
@@ -96,6 +99,13 @@ Page({
     var that = this;
     wx.redirectTo({
       url: "/pages/author/register/register"
+    });
+  },
+
+  showList: function() {
+    var that = this;
+    wx.redirectTo({
+      url: "/pages/list/list"
     });
   }
 

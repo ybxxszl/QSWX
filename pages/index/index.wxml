@@ -1,11 +1,15 @@
 <view wx:if="{{!needRegister}}">
+  <view>{{wxAuthorId}}</view>
   <view>{{wxAuthorEmail}}</view>
   <view>{{wxAuthorNickName}}</view>
   <view>{{wxAuthorSex}}</view>
   <view>{{wxAuthorCountry}}</view>
-  <view>{{wxAuthorCity}}</view>
   <view>{{wxAuthorProvince}}</view>
+  <view>{{wxAuthorCity}}</view>
   <view>{{wxAuthorAvatarUrl}}</view>
+  <view>
+    <button type="primary" plain="true" bindtap="showList">显示</button>
+  </view>
 </view>
 
 <view wx:if="{{needRegister}}">
