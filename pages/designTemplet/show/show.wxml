@@ -1,0 +1,6 @@
+<view>
+  ID：{{designTempletId}}
+</view>
+<view>
+  <button type='primary' plain='true' size='mini' bindtap='back'>返回</button>
+</view>

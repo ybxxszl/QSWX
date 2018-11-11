@@ -9,6 +9,12 @@
       "pages": [
         "register/register"
       ]
+    },
+    {
+      "root": "pages/designTemplet",
+      "pages": [
+        "show/show"
+      ]
     }
   ],
   "window": {

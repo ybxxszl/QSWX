@@ -1,0 +1,9 @@
+<view>
+  <input type='text' bindinput='searchDesignTempletList' placeholder='请输入搜索内容'></input>
+</view>
+<view wx:for='{{designTempletList}}' wx:for-item='designTemplet' wx:key='designTemplet.designTempletId' data-id='{{designTemplet.designTempletId}}' bindtap='getDesignTemplet'>
+  <view>{{designTemplet.designTempletName}}</view>
+  <view>{{designTemplet.finishTime}}</view>
+  <view>{{designTemplet.startRecoveryTime}}</view>
+  <view>{{designTemplet.endRecoveryTime}}</view>
+</view>

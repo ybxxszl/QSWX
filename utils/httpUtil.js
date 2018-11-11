@@ -3,7 +3,7 @@
 
 const app = getApp();
 
-var API_URL = "http://127.0.0.1:8080/qs/api/wechat";
+var API_URL = "http://192.168.56.1:8080/qs/api/wechat";
 
 function request(url, method, data) {
   console.log("url:" + url);
